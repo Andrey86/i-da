@@ -29,5 +29,3 @@ Router.route 'profile/:_id',
   name: "profile.edit"
   data: ->
     Meteor.users.findOne @params._id
-#  waitOn: ->
-#    Meteor.subscribe 'currentUser'

@@ -1,6 +1,3 @@
-Meteor.publish 'currentUser', ->
-  Meteor.users.find(@userId)
-
 Meteor.publish 'events', ->
   Events.find()
 
