@@ -32,5 +32,5 @@ Meteor.methods
               ]
     eventId
 
-  locationAutocomplete: ->
-    Geo.locationAutocomplete()
+  locationAutocomplete: (input) ->
+    Geo.locationAutocomplete(input)

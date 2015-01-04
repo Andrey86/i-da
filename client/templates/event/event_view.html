@@ -1,7 +1,8 @@
 <template name="EventView">
   <h4>{{title}}</h4>
   <p>{{description}}</p>
-
+    <h5>Организатор</h5>
+    {{leader.profile.name}}
     <h5>Участники</h5>
     <div class="list-group">
     {{#each eventParty}}

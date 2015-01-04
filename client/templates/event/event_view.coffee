@@ -7,12 +7,13 @@ Template.EventView.helpers
     Meteor.userId() not in @party
 
   canLeave: ->
-    Meteor.userId() in @party
+    Meteor.userId() in @party and @party.length > 1
+
+  leader: ->
+    Meteor.users.findOne @leaderId
 
 Template.EventView.events
   'click #join-btn': ->
-    Events.update @_id,
-      $addToSet: party: Meteor.userId()
+    Meteor.call "joinEvent", @_id
   'click #leave-btn': ->
-    Events.update @_id,
-      $pull: party: Meteor.userId()
+    Meteor.call "leaveEvent", @_id
