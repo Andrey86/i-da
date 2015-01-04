@@ -1,23 +1,42 @@
 <template name="EventView">
-  <h4>{{title}}</h4>
-  <p>{{description}}</p>
-    <h5>Организатор</h5>
-    {{leader.profile.name}}
-    <h5>Участники</h5>
-    <div class="list-group">
-    {{#each eventParty}}
-        <a href="{{pathFor 'profile.show'}}" class="list-group-item">{{profile.name}}</a>
-    {{/each}}
-  </div>
+    <div class="page-header">
+        <h3>{{title}}
+            <small>{{eventTime}}</small>
+        </h3>
+        <pre>{{description}}</pre>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Участники</div>
+        <div class="panel-body">
+            <div class="list-group">
+                {{#each eventParty}}
+                    <a href="{{pathFor 'profile.show'}}" class="list-group-item">
+                        {{profile.name}}
+                        {{#if isLeader ..}}
+                            <span class="badge">организатор</span>
+                        {{/if}}
+                    </a>
+                {{/each}}
+            </div>
+        </div>
+    </div>
 
     {{#if canJoin}}
-      <button type="button" class="btn btn-success" id="join-btn">Присоединиться</button>
+        <button type="button" class="btn btn-success" id="join-btn">Присоединиться</button>
     {{/if}}
 
     {{#if canLeave}}
-      <button type="button" class="btn btn-warning" id="leave-btn">Покниуть</button>
+        <button type="button" class="btn btn-warning" id="leave-btn">Покниуть</button>
     {{/if}}
 
-    <button type="button" class="btn cancel">Назад</button>
+    <h5>Комментарии</h5>
+    <ul class="list-group">
+        {{#each comments}}
+            {{>CommentItem}}
+        {{/each}}
+    </ul>
+
+    {{>CommentCreate}}
 
 </template>

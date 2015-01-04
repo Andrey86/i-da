@@ -1,4 +1,4 @@
-@EventsSchema = new SimpleSchema
+@EventSchema = new SimpleSchema
   title:
     type: String
     label: "Название"

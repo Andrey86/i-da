@@ -1,5 +1,5 @@
 <template name="EventCreate">
-    {{#autoForm schema="EventsSchema" id="createEventForm" type="method" meteormethod="createEvent"}}
+    {{#autoForm schema="EventSchema" id="createEventForm" type="method" meteormethod="createEvent"}}
         {{> afQuickField name="title"}}
         {{> afQuickField name="description"}}
         {{> afQuickField id="address-field" name="address"}}

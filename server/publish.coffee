@@ -12,3 +12,6 @@ Meteor.publish 'eventParty', (_id) ->
 Meteor.publish 'userProfile', (_id) ->
   Meteor.users.find _id,
     fields: profile: 1
+
+Meteor.publish 'eventComments', (_id) ->
+  Comments.find eventId: _id

@@ -1,5 +1,6 @@
 Meteor.startup ->
   i18n.setLanguage "ru"
+  moment.locale "ru"
 
   if navigator.geolocation
     Meteor.setInterval ->

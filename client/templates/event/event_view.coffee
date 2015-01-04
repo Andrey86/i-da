@@ -9,8 +9,15 @@ Template.EventView.helpers
   canLeave: ->
     Meteor.userId() in @party and @party.length > 1
 
-  leader: ->
-    Meteor.users.findOne @leaderId
+  comments: ->
+    Comments.find eventId: @_id
+
+  isLeader: (event) ->
+    @_id is event.leaderId
+
+  eventTime: ->
+    moment(@datetime).calendar().toLowerCase()
+
 
 Template.EventView.events
   'click #join-btn': ->

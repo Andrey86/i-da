@@ -21,3 +21,10 @@ Meteor.methods
   joinEvent: (eventId) ->
     Events.update eventId,
       $addToSet: party: Meteor.userId()
+
+  createComment: (doc) ->
+    Comments.insert
+      eventId: doc.eventId
+      authorId: Meteor.userId()
+      timestamp: new Date()
+      text: doc.text

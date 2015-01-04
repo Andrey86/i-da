@@ -21,6 +21,7 @@ Router.route 'events/:_id',
     [
       Meteor.subscribe 'singeEvent', @params._id
       Meteor.subscribe 'eventParty', @params._id
+      Meteor.subscribe 'eventComments', @params._id
     ]
 
 Router.route 'create_event',
