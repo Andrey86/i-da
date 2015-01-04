@@ -1,5 +1,5 @@
 Router.configure
-  layoutTemplate: 'layout'
+  layoutTemplate: 'Layout'
   onBeforeAction: ->
     if Meteor.userId()
       @next()
@@ -13,12 +13,15 @@ Router.route '/',
     Meteor.subscribe 'events'
 
 Router.route 'events/:_id',
-  template: 'Event'
+  template: 'EventView'
   name: "event.show"
   data: ->
     Events.findOne @params._id
   waitOn: ->
-    Meteor.subscribe 'singeEvent', @params._id
+    [
+      Meteor.subscribe 'singeEvent', @params._id
+      Meteor.subscribe 'eventParty', @params._id
+    ]
 
 Router.route 'create_event',
   template: 'EventCreate'

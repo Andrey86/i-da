@@ -1,3 +1,3 @@
-Template.Profile.events
+Template.Layout.events
   'click .cancel': ->
     history.back()

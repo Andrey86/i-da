@@ -6,8 +6,7 @@ Meteor.startup ->
       if Meteor.userId()
         navigator.geolocation.getCurrentPosition (position) ->
           Meteor.users.update Meteor.userId(),
-            $set:
-              "profile.coordinates": position.coords
+            $set: coordinates: position.coords
     , 1000
 
 

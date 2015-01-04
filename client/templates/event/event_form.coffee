@@ -9,10 +9,6 @@ Template.EventCreate.rendered = ->
         data = results: (id: i.description, text: i.description for i in result)
         query.callback data
 
-Template.EventCreate.events
-  'click .cancel': ->
-    history.back()
-
 AutoForm.hooks
   createEventForm:
     onSuccess: (operation, result) ->

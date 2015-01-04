@@ -1,0 +1,22 @@
+<template name="EventView">
+  <h4>{{title}}</h4>
+  <p>{{description}}</p>
+
+    <h5>Участники</h5>
+    <div class="list-group">
+    {{#each eventParty}}
+        <a class="list-group-item">{{profile.name}}</a>
+    {{/each}}
+  </div>
+
+    {{#if canJoin}}
+      <button type="button" class="btn btn-success" id="join-btn">Присоединиться</button>
+    {{/if}}
+
+    {{#if canLeave}}
+      <button type="button" class="btn btn-warning" id="leave-btn">Покниуть</button>
+    {{/if}}
+
+    <button type="button" class="btn cancel">Назад</button>
+
+</template>

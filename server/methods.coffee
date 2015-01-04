@@ -3,22 +3,22 @@ Meteor.methods
     user = Meteor.users.findOne(@userId)
     (e._id for e in Events.find(
       "place.loc": $geoWithin: $centerSphere:
-        [[user.profile.coordinates.longitude, user.profile.coordinates.latitude],
+        [[user.coordinates.longitude, user.coordinates.latitude],
          km / 6371]
       ).fetch()
     )
 
   createEvent: (doc) ->
-    newEvent =
+    eventId = Events.insert
       title: doc.title
       description: doc.description
       datetime: doc.datetime
       tags: doc.tags or []
       leader: @userId
+      party: [@userId]
       place:
         address: doc.address
 
-    eventId = Events.insert newEvent
     if doc.address
       results = Geo.getCoordinatesByAddress doc.address
       if results.length
@@ -32,4 +32,5 @@ Meteor.methods
               ]
     eventId
 
-  locationAutocomplete: Geo.locationAutocomplete
+  locationAutocomplete: ->
+    Geo.locationAutocomplete()
