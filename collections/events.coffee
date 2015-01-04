@@ -2,6 +2,8 @@
 
 Events.allow
   insert: (userId, doc) ->
-    true
+    !!userId
   update: (userId, doc, fieldNames, modifier) ->
-    true
+    doc.leaderId is userId or
+    _.isEqual(modifier, $addToSet: party: userId) or
+    _.isEqual(modifier, $pull: party: userId)

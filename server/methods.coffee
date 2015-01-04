@@ -14,7 +14,7 @@ Meteor.methods
       description: doc.description
       datetime: doc.datetime
       tags: doc.tags or []
-      leader: @userId
+      leaderId: @userId
       party: [@userId]
       place:
         address: doc.address

@@ -27,8 +27,17 @@ Router.route 'create_event',
   template: 'EventCreate'
   name: "event.create"
 
-Router.route 'profile/:_id',
-  template: 'Profile'
+Router.route 'profile/edit/:_id',
+  template: 'ProfileEdit'
   name: "profile.edit"
   data: ->
     Meteor.users.findOne @params._id
+
+Router.route 'profile/:_id',
+  template: 'ProfileView'
+  name: "profile.show"
+  waitOn: ->
+    Meteor.subscribe 'userProfile'
+  data: ->
+    user = Meteor.users.findOne @params._id
+    user.profile if user

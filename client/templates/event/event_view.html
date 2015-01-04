@@ -5,7 +5,7 @@
     <h5>Участники</h5>
     <div class="list-group">
     {{#each eventParty}}
-        <a class="list-group-item">{{profile.name}}</a>
+        <a href="{{pathFor 'profile.show'}}" class="list-group-item">{{profile.name}}</a>
     {{/each}}
   </div>
 

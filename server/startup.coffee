@@ -9,4 +9,4 @@ Meteor.startup ->
           type: "Point"
           coordinates: [37.653065, 55.708633]
       party: []
-      leader: 'asdqwe'
+      leaderId: 'asdqwe'

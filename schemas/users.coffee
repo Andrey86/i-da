@@ -11,5 +11,4 @@
       firstOption: "(Укажите пол)"
       type: "select2"
       options:
-        M: "Мужской"
-        F: "Женский"
+        Titles.gender
