@@ -1,7 +1,6 @@
 Meteor.methods
   getCloseEvents: (km) ->
     user = Meteor.users.findOne(@userId)
-    console.log [[user.profile.coordinates.longitude, user.profile.coordinates.latitude], km / 6371]
     (e._id for e in Events.find(
       "place.loc": $geoWithin: $centerSphere:
         [[user.profile.coordinates.longitude, user.profile.coordinates.latitude],
@@ -10,7 +9,6 @@ Meteor.methods
     )
 
   createEvent: (doc) ->
-    console.log doc
     newEvent =
       title: doc.title
       description: doc.description

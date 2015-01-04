@@ -1,5 +1,10 @@
 Router.configure
   layoutTemplate: 'layout'
+  onBeforeAction: ->
+    if Meteor.userId()
+      @next()
+    else
+      @render 'Login'
 
 Router.route '/',
   template: 'EventList'
