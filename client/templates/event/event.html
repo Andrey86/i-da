@@ -1,0 +1,9 @@
+<template name="Event">
+  <h4>{{title}}</h4>
+  <p>{{description}}</p>
+  <ul>
+    {{#each participants}}
+        <li>{{name}}</li>
+    {{/each}}
+  </ul>
+</template>
