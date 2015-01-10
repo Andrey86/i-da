@@ -10,3 +10,4 @@ Meteor.startup ->
           coordinates: [37.653065, 55.708633]
       party: []
       leaderId: 'asdqwe'
+      tags: ['magic', 'mtg', 'карты']

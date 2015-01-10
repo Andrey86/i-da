@@ -18,6 +18,9 @@ Template.EventView.helpers
   eventTime: ->
     moment(@datetime).calendar().toLowerCase()
 
+  niceTags: ->
+    @tags.join(', ')
+
 
 Template.EventView.events
   'click #join-btn': ->
