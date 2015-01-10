@@ -1,8 +1,9 @@
 Template.EventList.helpers
   events: ->
+    tagFilter = Session.get("tagFilter") or []
     selector = _id: $in: Session.get("closeEvents") or []
-    if Session.get("tagsFilter")
-      selector.tags = $all: Session.get("tagsFilter")
+    if tagFilter.length
+      selector.tags = $all: tagFilter
     Events.find selector
 
 Template.EventList.events
@@ -14,7 +15,7 @@ Template.EventList.events
         Session.set "closeEvents", result
 
   "change #tags-search": (e) ->
-    Session.set "tagsFilter", e.val
+    Session.set "tagFilter", e.val
 
 Template.EventList.rendered = ->
   $("#range-slider").slider
