@@ -43,7 +43,10 @@ Router.route 'profile/:_id',
   template: 'ProfileView'
   name: "profile.show"
   waitOn: ->
-    Meteor.subscribe 'userProfile'
+    [
+      Meteor.subscribe 'userProfile'
+      Meteor.subscribe 'categories'
+    ]
   data: ->
     user = Meteor.users.findOne @params._id
     user.profile if user

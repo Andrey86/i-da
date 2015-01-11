@@ -1,7 +1,15 @@
 <template name="ProfileView">
+    <div class="page-header">
+        <h3>{{name}}</h3>
+    </div>
+
     <div>
-        {{name}}<br>
-        Пол: {{genderTitle gender}}
+        {{#if gender}}
+            Пол: {{genderTitle gender}}<br>
+        {{/if}}
+        {{#if categories.length}}
+            Интересы: {{prettyCategories}}<br>
+        {{/if}}
     </div>
     <button type="button" class="btn cancel">Назад</button>
 </template>
