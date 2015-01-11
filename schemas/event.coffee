@@ -12,6 +12,16 @@
     type: [String]
     label: 'Теги события'
     optional: true
+  categoryId:
+    type: String
+    label: 'Категория'
+    autoform:
+      firstOption: "(Выберите)"
+      type: "select2"
+      options: ->
+        Categories.find().map (doc) ->
+          value: doc._id
+          label: doc.title
   address:
     type: String
     label: "Место проведения"

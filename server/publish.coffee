@@ -1,5 +1,7 @@
 Meteor.publish 'events', ->
-  Events.find()
+  categories = Meteor.users.findOne(@userId).profile.categories
+  selector = if categories then categoryId: $in: categories else {}
+  Events.find selector
 
 Meteor.publish 'singeEvent', (_id) ->
   Events.find _id
@@ -15,3 +17,6 @@ Meteor.publish 'userProfile', (_id) ->
 
 Meteor.publish 'eventComments', (_id) ->
   Comments.find eventId: _id
+
+Meteor.publish 'categories', ->
+  Categories.find()

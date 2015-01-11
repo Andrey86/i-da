@@ -12,6 +12,7 @@ Meteor.methods
     eventId = Events.insert
       title: doc.title
       description: doc.description
+      categoryId: doc.categoryId
       datetime: doc.datetime
       tags: doc.tags or []
       leaderId: @userId

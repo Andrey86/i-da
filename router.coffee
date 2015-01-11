@@ -22,17 +22,22 @@ Router.route 'events/:_id',
       Meteor.subscribe 'singeEvent', @params._id
       Meteor.subscribe 'eventParty', @params._id
       Meteor.subscribe 'eventComments', @params._id
+      Meteor.subscribe 'categories'
     ]
 
 Router.route 'create_event',
   template: 'EventCreate'
   name: "event.create"
+  subscriptions: ->
+    @subscribe 'categories'
 
 Router.route 'profile/edit/:_id',
   template: 'ProfileEdit'
   name: "profile.edit"
-  data: ->
-    Meteor.users.findOne @params._id
+  waitOn: ->
+    Meteor.subscribe 'userProfile'
+  subscriptions: ->
+    @subscribe 'categories'
 
 Router.route 'profile/:_id',
   template: 'ProfileView'
