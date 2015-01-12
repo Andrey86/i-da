@@ -1,7 +1,13 @@
 Meteor.publish 'events', ->
-  categories = Meteor.users.findOne(@userId).profile.categories
-  selector = if categories then categoryId: $in: categories else {}
-  Events.find selector
+  if @userId
+    currentUser = Meteor.users.findOne @userId
+    selector = 'place.loc': $geoWithin: $centerSphere:
+      [currentUser.loc.coordinates, 30 / 6371]  # в пределах 30 км
+    if currentUser.profile.categories and currentUser.profile.categories.length
+      selector.categoryId = $in: currentUser.profile.categories
+    Events.find selector
+  else
+    @ready()
 
 Meteor.publish 'singeEvent', (_id) ->
   Events.find _id
@@ -20,3 +26,12 @@ Meteor.publish 'eventComments', (_id) ->
 
 Meteor.publish 'categories', ->
   Categories.find()
+
+Meteor.publish 'closePeople', ->
+  if @userId
+    currentUser = Meteor.users.findOne @userId
+    if currentUser.loc
+      Meteor.users.find
+        loc: $geoWithin: $centerSphere:
+          [currentUser.loc.coordinates, 30 / 6371]  # в пределах 30 км
+  @ready()

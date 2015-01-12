@@ -3,8 +3,7 @@ Meteor.methods
     user = Meteor.users.findOne(@userId)
     (e._id for e in Events.find(
       "place.loc": $geoWithin: $centerSphere:
-        [[user.coordinates.longitude, user.coordinates.latitude],
-         km / 6371]
+        [user.loc.coordinates, km / 6371]
       ).fetch()
     )
 

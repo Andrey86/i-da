@@ -8,13 +8,13 @@ Router.configure
 
 Router.route '/',
   template: 'EventList'
-  name: "event.list"
+  name: 'event.list'
   waitOn: ->
     Meteor.subscribe 'events'
 
 Router.route 'events/:_id',
   template: 'EventView'
-  name: "event.show"
+  name: 'event.show'
   data: ->
     Events.findOne @params._id
   waitOn: ->
@@ -27,13 +27,13 @@ Router.route 'events/:_id',
 
 Router.route 'create_event',
   template: 'EventCreate'
-  name: "event.create"
+  name: 'event.create'
   subscriptions: ->
     @subscribe 'categories'
 
 Router.route 'profile/edit/:_id',
   template: 'ProfileEdit'
-  name: "profile.edit"
+  name: 'profile.edit'
   waitOn: ->
     Meteor.subscribe 'userProfile'
   subscriptions: ->
@@ -41,7 +41,7 @@ Router.route 'profile/edit/:_id',
 
 Router.route 'profile/:_id',
   template: 'ProfileView'
-  name: "profile.show"
+  name: 'profile.show'
   waitOn: ->
     [
       Meteor.subscribe 'userProfile'
@@ -50,3 +50,9 @@ Router.route 'profile/:_id',
   data: ->
     user = Meteor.users.findOne @params._id
     user.profile if user
+
+Router.route 'people',
+  template: 'PeopleList'
+  name: 'people.list'
+  waitOn: ->
+    Meteor.subscribe 'closePeople'
