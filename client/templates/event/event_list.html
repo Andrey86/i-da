@@ -2,6 +2,7 @@
     <form class="form-horizontal">
         <div class="form-group">
             <label for="tags-search" class="col-sm-1 control-label">Теги</label>
+
             <div class="col-sm-3">
                 <input type="hidden" class="form-control" id="tags-search">
             </div>
@@ -9,6 +10,7 @@
 
         <div class="form-group">
             <label for="range-slider" class="col-sm-1 control-label">Расстояние</label>
+
             <div class="col-sm-3">
                 <input type="text" value="3" class="form-control" id="range-slider">
             </div>
@@ -24,8 +26,8 @@
 <template name="EventItem">
     <div class="list-group">
         <a href="{{pathFor "event.show"}}" class="list-group-item">
-            <h4 class="list-group-item-heading">{{title}}</h4>
             <span class="badge">{{party.length}}</span>
+            <h4 class="list-group-item-heading">{{title}}</h4>
             <p class="list-group-item-text">{{description}}</p>
         </a>
     </div>
